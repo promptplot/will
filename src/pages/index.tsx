@@ -65,8 +65,8 @@ function App() {
   ];
 
   return (
-    <div className="App">
-      <div className="progress-bar">
+    <div className="App bg-gray-200 ">
+      <div className="progress-bar mt-8">
       <div style={{width: page === 0? "25%": page === 1? "50%" : page === 2? "75%" : "100%"}}></div>
     </div> 
     <br/>

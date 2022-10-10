@@ -5,12 +5,12 @@ const Witnesses = ({ page, setPage, formData, setFormData }) => {
             <p className="text-center text-slate-900 mb-10 "> After you finish filling out your will, we will email you the steps to make it legally binding.
                 One of those steps is to sign the printed document and have it witnessed by
                 two people and notarized if you choose. </p>
-            <div className="text-center">
+            <div >
                 <div className="text-center font-bold text-lg mb-4"> Would you like us to email you and your two potential witnesses to get the ball rolling? </div>
                 <p> Optional but recommended. Witnesses should be over the age of 18 and not otherwise named in your will. </p>
-                <label className="text-center font-bold text-lg mb-4"> Witness 1 Email </label>
+                <div className="font-bold text-lg mb-4 mt-8"> Witness 1 Email </div>
                 <input
-                className="w-full"
+                className="w-full border-0 "
                     type="text"
                     placeholder="Email"
                     value={formData.email} //setting the value of the form to the props value
@@ -18,9 +18,9 @@ const Witnesses = ({ page, setPage, formData, setFormData }) => {
                         setFormData({ ...formData, email: e.target.value })  //setting the formData to the value input of the textfield 
                     }
                 />
-                <label className="text-center font-bold text-lg mb-4"> Witness 2 Email </label>
+                <div className="font-bold text-lg mb-4"> Witness 2 Email </div>
                 <input
-                className="w-full mb-4"
+                className="w-full mb-4 border-0 "
                     type="text"
                     placeholder="Email"
                     value={formData.email} //setting the value of the form to the props value
@@ -28,7 +28,7 @@ const Witnesses = ({ page, setPage, formData, setFormData }) => {
                         setFormData({ ...formData, email: e.target.value })  //setting the formData to the value input of the textfield 
                     }
                 />
-                <label className="text-center font-bold text-lg mb-4"> Want to include a custom message? </label>
+                <div className="text-center font-bold text-lg mb-4"> Want to include a custom message? </div>
                 <textarea
                 className="w-full border-2"
                     placeholder=""
