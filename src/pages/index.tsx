@@ -3,6 +3,7 @@ import GetStarted from "./GetStarted";
 import TheWill from "./TheWill";
 import FinalArrangements from "./FinalArrangements";
 import Witnesses from "./Witnesses";
+import Navbar from "../components/Navbar";
 
 
 
@@ -66,11 +67,12 @@ function App() {
 
   return (
     <div className="App bg-gray-200 ">
-      <div className="progress-bar mt-8">
-      <div style={{width: page === 0? "25%": page === 1? "50%" : page === 2? "75%" : "100%"}}></div>
-    </div> 
-    <br/>
-    <br/>
+      <Navbar/>
+      <div className="progress-bar mt-32">
+        <div style={{ width: page === 0 ? "25%" : page === 1 ? "50%" : page === 2 ? "75%" : "100%" }}></div>
+      </div>
+      <br />
+      <br />
       <div>{componentList[page]}</div>
     </div>
   );
