@@ -13,7 +13,7 @@ function GetStarted({ page, setPage, formData, setFormData }) {
                     className="w-80 mr-8 border-0"
                     type="text"
                     placeholder="First Name"
-                    value={formData.fullName} //setting the value of the form to the props value
+                    value={formData.firstName} //setting the value of the form to the props value
                     onChange={(e) =>
                         setFormData({ ...formData, firstName: e.target.value })  //setting the formData to the value input of the textfield 
                     }

@@ -1,3 +1,5 @@
+
+
 const Witnesses = ({ page, setPage, formData, setFormData }) => {
     return (
         <div className="card">
@@ -13,9 +15,9 @@ const Witnesses = ({ page, setPage, formData, setFormData }) => {
                 className="w-full border-0 "
                     type="text"
                     placeholder="Email"
-                    value={formData.email} //setting the value of the form to the props value
+                    value={formData.witnessEmail1} //setting the value of the form to the props value
                     onChange={(e) =>
-                        setFormData({ ...formData, email: e.target.value })  //setting the formData to the value input of the textfield 
+                        setFormData({ ...formData, witnessEmail1: e.target.value })  //setting the formData to the value input of the textfield 
                     }
                 />
                 <div className="font-bold text-lg mb-4"> Witness 2 Email </div>
@@ -23,9 +25,9 @@ const Witnesses = ({ page, setPage, formData, setFormData }) => {
                 className="w-full mb-4 border-0 "
                     type="text"
                     placeholder="Email"
-                    value={formData.email} //setting the value of the form to the props value
+                    value={formData.witnessEmail2} //setting the value of the form to the props value
                     onChange={(e) =>
-                        setFormData({ ...formData, email: e.target.value })  //setting the formData to the value input of the textfield 
+                        setFormData({ ...formData, witnessEmail2: e.target.value })  //setting the formData to the value input of the textfield 
                     }
                 />
                 <div className="text-center font-bold text-lg mb-4"> Want to include a custom message? </div>
@@ -47,9 +49,14 @@ const Witnesses = ({ page, setPage, formData, setFormData }) => {
             <br />
 
             <button
-                onClick={() => {
-                    alert("You've successfully submitted this form");
-                }}>
+                 onClick={() => async (data, e) => {
+                     
+                         await saveForm(data)
+                          setFormData([...formData , data]);
+                          e.target.reset();
+                 }
+            }
+                >
                 Submit
             </button>
             <br />

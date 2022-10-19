@@ -1,3 +1,4 @@
+import { signOut } from "next-auth/react";
 import Link from "next/link";
 
 function Navbar() {
@@ -10,20 +11,18 @@ function Navbar() {
             {/* Right Sided */}
             <div>
                 <ul className={`main-nav flex`}>
-                    <li className="m-4">
+                    {/* <li className="m-4">
                         <Link href="/" >
                             Home
                         </Link>
-                    </li>
-                    <li className="m-4">
+                    </li> */}
+                    {/* <li className="m-4">
                     <Link href="#" >
                             SignIn
                         </Link>
-                    </li>
+                    </li> */}
                     <li className="m-4">
-                    <Link href="#" >
-                            SignUp
-                        </Link>
+                    <button onClick = {() => signOut()} > SignOut</button>
                     </li>
                 </ul>
             </div>

@@ -62,3 +62,41 @@ model VerificationToken {
 
     @@unique([identifier, token])
 }
+
+model FormData {
+    id                  String    @id @default(cuid())
+    firstName           String
+    lastName            String
+    mi                  String
+    email               String
+    password            String
+    month               String
+    date                Int
+    year                Int
+    address             String
+    city                String
+    state               String
+    zip                 Int
+    phone               String
+    childrenU18         Boolean
+    bequests            Boolean
+    exFirstName         String
+    exMi                String
+    exLastName          String
+    relationShip        String
+    exEmail             String
+    altExecutor         Boolean
+    trustedRelation1    String
+    trustedRelation2    String
+    trustedRelation3    String
+    trustedEmail1       String
+    trustedEmail2       String
+    trustedEmail3       String
+    wishes              String
+    cremation           String
+    ceremony            String
+    specialRequest      Boolean
+    witnessEmail1       String
+    witnessEmail2       String
+    customMessage       String
+}

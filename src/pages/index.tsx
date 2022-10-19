@@ -4,38 +4,57 @@ import TheWill from "./TheWill";
 import FinalArrangements from "./FinalArrangements";
 import Witnesses from "./Witnesses";
 import Navbar from "../components/Navbar";
-
+import { useSession, signIn, signOut, getSession } from 'next-auth/react'
 
 
 function App() {
 
+  const { data: session, status } = useSession()
+
   const [page, setPage] = useState(0);
 
   const [formData, setFormData] = useState({
+    id: "",
     firstName: "",
     lastName: "",
     mi: "",
+    email: "",
+    password: "",
     month: "",
     date: "",
     year: "",
-    password: "",
-    nickname: "",
-    email: "",
     address: "",
     city: "",
     state: "",
     zip: "",
     phone: "",
-    nationality: "",
-    zipcode: "",
-    highestQualification: "",
-    occupation: "",
-    about: "",
-    relation: "",
+    childrenU18: false,
+    bequests: false,
+    exFirstName: "",
+    exMi: "",
+    exLastName: "",
+    relationShip: "",
+    exEmail: "",
+    altExecutor: false,
+    trustedRelation1: "",
+    trustedRelation2: "",
+    trustedRelation3: "",
+    trustedEmail1: "",
+    trustedEmail2: "",
+    trustedEmail3: "",
     wishes: "",
     cremation: "",
     ceremony: "",
-    customMessage: ""
+    specialRequest: false,
+    witnessEmail1: "",
+    witnessEmail2: "",
+    customMessage: "",
+
+    // nickname: "",
+    // nationality: "",
+    // highestQualification: "",
+    // occupation: "",
+    // about: "",
   });
 
   const componentList = [
@@ -65,17 +84,56 @@ function App() {
     />,
   ];
 
-  return (
-    <div className="App bg-gray-200 ">
-      <Navbar/>
-      <div className="progress-bar mt-32">
-        <div style={{ width: page === 0 ? "25%" : page === 1 ? "50%" : page === 2 ? "75%" : "100%" }}></div>
+  async function saveForm(formData) {
+    const response = await fetch('/api/formData', {
+      method: 'POST',
+      body: JSON.stringify(formData)
+    });
+
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+
+    return await response.json();
+  }
+
+  if (session) {
+
+    return (
+      <div className="App bg-gray-200 ">
+        <Navbar />
+        <div className="progress-bar mt-32">
+          <div style={{ width: page === 0 ? "25%" : page === 1 ? "50%" : page === 2 ? "75%" : "100%" }}></div>
+        </div>
+        <br />
+        <br />
+        <div>{componentList[page]}</div>
       </div>
-      <br />
-      <br />
-      <div>{componentList[page]}</div>
-    </div>
-  );
+    );
+
+  }
+  else {
+    return (
+      <div>
+        <p> You are not Signed in!!! </p>
+      </div>
+    )
+  }
+
 }
 
 export default App
+
+export const getServerSideProps = async (context) => {
+  const session = await getSession(context)
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/Login',
+      },
+    };
+  }
+  return {
+    props: { session },
+  };
+}

@@ -145,7 +145,7 @@ const FinalArrangements = ({ page, setPage, formData, setFormData }) => {
                 <p className="text-center text-slate-900 mb-10 "> For example, you may request to have certain songs played at your ceremony,
                     ask for a tree to be planted where your ashes will be spread,
                     or have people donate to an organization of your choice instead of sending flowers for the funeral. </p>
-                <button className="w-40 mr-4"> Yes </button>
+                <button onClick = {() => setFormData({...formData, specialRequest: true })} className="w-40 mr-4"> Yes </button>
                 <button className="w-40"> No </button>
             </div>
             <br />

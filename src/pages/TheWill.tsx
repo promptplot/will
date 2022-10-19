@@ -11,13 +11,13 @@ const TheWill = ({ page, setPage, formData, setFormData }) => {
             <div>
                 <div className="font-bold text-lg"> Do you have children under the age of 18? </div>
                 <br />
-                <button className="w-40 mr-4"> Yes </button>
+                <button onClick = {() => setFormData({...formData, childrenU18: true })} className="w-40 mr-4"> Yes </button>
                 <button className="w-40"> No </button>
             </div>
             <div>
                 <div className="font-bold text-lg mt-8 "> Do you want to include one or more bequests in your will?  </div>
                 <br />
-                <button className="w-40 mr-4"> Yes </button>
+                <button onClick = {() => setFormData({...formData, bequests: true })} className="w-40 mr-4"> Yes </button>
                 <button className="w-40"> No </button>
             </div>
             <div >
@@ -32,18 +32,18 @@ const TheWill = ({ page, setPage, formData, setFormData }) => {
                         className="w-80 mr-8 border-0 "
                         type="text"
                         placeholder="First Name"
-                        value={formData.fullName} //setting the value of the form to the props value
+                        value={formData.exFirstName} //setting the value of the form to the props value
                         onChange={(e) =>
-                            setFormData({ ...formData, firstName: e.target.value })  //setting the formData to the value input of the textfield 
+                            setFormData({ ...formData, exFirstName: e.target.value })  //setting the formData to the value input of the textfield 
                         }
                     />
                     <input
                         className="w-20 border-0 "
                         type="text"
                         placeholder="MI"
-                        value={formData.mi} //setting the value of the form to the props value
+                        value={formData.exMi} //setting the value of the form to the props value
                         onChange={(e) =>
-                            setFormData({ ...formData, mi: e.target.value })  //setting the formData to the value input of the textfield 
+                            setFormData({ ...formData, exMi: e.target.value })  //setting the formData to the value input of the textfield 
                         }
                     />
                 </div>
@@ -51,17 +51,17 @@ const TheWill = ({ page, setPage, formData, setFormData }) => {
                     className="w-full border-0 "
                     type="text"
                     placeholder="Last Name"
-                    value={formData.lastName} //setting the value of the form to the props value
+                    value={formData.exLastName} //setting the value of the form to the props value
                     onChange={(e) =>
-                        setFormData({ ...formData, lastName: e.target.value })  //setting the formData to the value input of the textfield 
+                        setFormData({ ...formData, exLastName: e.target.value })  //setting the formData to the value input of the textfield 
                     }
                 />
                 <div className="text-center ">
                     <div className="text-center font-bold text-lg mb-4"> Is your relationship to this executor personal or professional? </div>
                     <p className="text-center text-slate-900 mb-10 "> By providing this information we can help you think of ways to get the conversation started
                         with them in the Messages section of your Fabric Will Kit. </p>
-                    <button className="w-40 mr-4"> Personal </button>
-                    <button className="w-40"> Proffessional </button>
+                    <button onClick = {() => setFormData({...formData, relationShip: "personal" })} className="w-40 mr-4"> Personal </button>
+                    <button onClick = {() => setFormData({...formData, relationShip: "proffessional" })} className="w-40"> Proffessional </button>
                 </div>
                 <div className="text-center mt-8 ">
                     <div className="text-center font-bold text-lg mb-4"> Send this will to the executor? </div>
@@ -71,9 +71,9 @@ const TheWill = ({ page, setPage, formData, setFormData }) => {
                         className="w-full border-0 "
                         type="text"
                         placeholder="Email"
-                        value={formData.email} //setting the value of the form to the props value
+                        value={formData.exEmail} //setting the value of the form to the props value
                         onChange={(e) =>
-                            setFormData({ ...formData, email: e.target.value })  //setting the formData to the value input of the textfield 
+                            setFormData({ ...formData, exEmail: e.target.value })  //setting the formData to the value input of the textfield 
                         }
                     />
                 </div>
@@ -82,7 +82,7 @@ const TheWill = ({ page, setPage, formData, setFormData }) => {
                 <div className="text-center font-bold text-lg mb-4"> Do you want to designate an alternate executor? </div>
                 <p className="text-center text-slate-900 mb-4 "> An alternate executor would become the executor of your will in the event
                     that the primary person chosen is unwilling or unable to take on the role. </p>
-                <button className="w-40 mr-4"> Yes </button>
+                <button onClick = {() => setFormData({...formData, altExecutor: true })} className="w-40 mr-4"> Yes </button>
                 <button className="w-40"> No </button>
             </div>
             <div className="text-center mt-8">
@@ -96,9 +96,9 @@ const TheWill = ({ page, setPage, formData, setFormData }) => {
                     <select
                         className="mr-8"
                         placeholder="Relationship to contact"
-                        value={formData.relation} //setting the value of the form to the props value
+                        value={formData.trustedRelation1} //setting the value of the form to the props value
                         onChange={(e) =>
-                            setFormData({ ...formData, relation: e.target.value })  //setting the formData to the value input of the textfield  
+                            setFormData({ ...formData, trustedRelation1: e.target.value })  //setting the formData to the value input of the textfield  
                         }
                     >
                         <option>Spouse</option>
@@ -118,7 +118,39 @@ const TheWill = ({ page, setPage, formData, setFormData }) => {
                         className=" border-0 "
                         type="text"
                         placeholder="Email"
-                        value={formData.email} //setting the value of the form to the props value
+                        value={formData.trustedEmail} //setting the value of the form to the props value
+                        onChange={(e) =>
+                            setFormData({ ...formData, trustedEmail1: e.target.value })  //setting the formData to the value input of the textfield 
+                        }
+                    />
+                </div>
+                <div className="flex mb-8 ">
+                    <select
+                        className="mr-8"
+                        placeholder="Relationship to contact"
+                        value={formData.trustedRelation2} //setting the value of the form to the props value
+                        onChange={(e) =>
+                            setFormData({ ...formData, trustedRelation2: e.target.value })  //setting the formData to the value input of the textfield  
+                        }
+                    >
+                        <option>Spouse</option>
+                        <option>Fiance</option>
+                        <option>Life Partner</option>
+                        <option>Child</option>
+                        <option>Son</option>
+                        <option>Daughter</option>
+                        <option>Mother</option>
+                        <option>Father</option>
+                        <option>Brother</option>
+                        <option>Sister</option>
+                        <option>Other Family</option>
+                        <option>Other</option>
+                    </select>
+                    <input
+                        className=" border-0 "
+                        type="text"
+                        placeholder="Email"
+                        value={formData.trustedEmail2} //setting the value of the form to the props value
                         onChange={(e) =>
                             setFormData({ ...formData, email: e.target.value })  //setting the formData to the value input of the textfield 
                         }
@@ -128,9 +160,9 @@ const TheWill = ({ page, setPage, formData, setFormData }) => {
                     <select
                         className="mr-8"
                         placeholder="Relationship to contact"
-                        value={formData.relation} //setting the value of the form to the props value
+                        value={formData.trustedRelation3} //setting the value of the form to the props value
                         onChange={(e) =>
-                            setFormData({ ...formData, relation: e.target.value })  //setting the formData to the value input of the textfield  
+                            setFormData({ ...formData, trustedRelation3: e.target.value })  //setting the formData to the value input of the textfield  
                         }
                     >
                         <option>Spouse</option>
@@ -150,41 +182,9 @@ const TheWill = ({ page, setPage, formData, setFormData }) => {
                         className=" border-0 "
                         type="text"
                         placeholder="Email"
-                        value={formData.email} //setting the value of the form to the props value
+                        value={formData.trustedEmail3} //setting the value of the form to the props value
                         onChange={(e) =>
-                            setFormData({ ...formData, email: e.target.value })  //setting the formData to the value input of the textfield 
-                        }
-                    />
-                </div>
-                <div className="flex mb-8 ">
-                    <select
-                        className="mr-8"
-                        placeholder="Relationship to contact"
-                        value={formData.relation} //setting the value of the form to the props value
-                        onChange={(e) =>
-                            setFormData({ ...formData, relation: e.target.value })  //setting the formData to the value input of the textfield  
-                        }
-                    >
-                        <option>Spouse</option>
-                        <option>Fiance</option>
-                        <option>Life Partner</option>
-                        <option>Child</option>
-                        <option>Son</option>
-                        <option>Daughter</option>
-                        <option>Mother</option>
-                        <option>Father</option>
-                        <option>Brother</option>
-                        <option>Sister</option>
-                        <option>Other Family</option>
-                        <option>Other</option>
-                    </select>
-                    <input
-                        className=" border-0 "
-                        type="text"
-                        placeholder="Email"
-                        value={formData.email} //setting the value of the form to the props value
-                        onChange={(e) =>
-                            setFormData({ ...formData, email: e.target.value })  //setting the formData to the value input of the textfield 
+                            setFormData({ ...formData, trustedEmail3: e.target.value })  //setting the formData to the value input of the textfield 
                         }
                     />
                 </div>
