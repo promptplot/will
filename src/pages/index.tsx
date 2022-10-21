@@ -84,19 +84,7 @@ function App() {
     />,
   ];
 
-  async function saveForm(formData) {
-    const response = await fetch('/api/formData', {
-      method: 'POST',
-      body: JSON.stringify(formData)
-    });
-
-    if (!response.ok) {
-      throw new Error(response.statusText);
-    }
-
-    return await response.json();
-  }
-
+  
   if (session) {
 
     return (

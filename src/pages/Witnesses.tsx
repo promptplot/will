@@ -1,3 +1,23 @@
+import formData from "./api/formData";
+
+async function saveForm(formData) {
+    const response = await fetch('/api/formData', {
+      method: 'POST',
+      body: JSON.stringify(formData)
+    });
+
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+
+    return await response.json();
+  }
+
+  const DisplayData = async (data) => {
+    return (
+        await saveForm(data)
+    )
+  }
 
 
 const Witnesses = ({ page, setPage, formData, setFormData }) => {
@@ -49,13 +69,7 @@ const Witnesses = ({ page, setPage, formData, setFormData }) => {
             <br />
 
             <button
-                 onClick={() => async (data, e) => {
-                     
-                         await saveForm(data)
-                          setFormData([...formData , data]);
-                          e.target.reset();
-                 }
-            }
+                 onClick={DisplayData}
                 >
                 Submit
             </button>

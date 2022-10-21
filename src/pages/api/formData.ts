@@ -8,10 +8,10 @@ export default async (req: NextApiRequest, res: NextApiResponse ) => {
         return res.status(405).json({message: 'Metod Not Allowed' });
     }
 
-    const formData = JSON.parse(req.body);
+    const form = JSON.parse(req.body);
 
     const savedForm = await prisma.formData.create({
-        data: formData
+        data: form
     })
     
     res.json(savedForm)
